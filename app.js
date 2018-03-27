@@ -12,7 +12,7 @@ router.get('/', async (ctx) => {
   })
 })
 router.get('/coc/:city', async (ctx) => {
-  await ctx.render('coc', cocText[ctx.params.city])
+  await ctx.render('coc', cocText[ctx.params.city] || {})
 })
 
 app.use(views(__dirname + '/tpl', {
