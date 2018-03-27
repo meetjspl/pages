@@ -1,19 +1,9 @@
 const Koa = require('koa')
 const app = new Koa()
-const Router = require('koa-router')
-const router = new Router()
+
 const views = require('koa-views')
 
-const cocText = require('./text/coc')
-
-router.get('/', async (ctx) => {
-  await ctx.render('index', {
-    content: 'hello'
-  })
-})
-router.get('/coc/:city', async (ctx) => {
-  await ctx.render('coc', cocText[ctx.params.city] || {})
-})
+const router = require('./routes')()
 
 app.use(views(__dirname + '/tpl', {
   map: {
